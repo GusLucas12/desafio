@@ -11,22 +11,25 @@ require_once './controllers/cidadaoController.php';
 
 //instanciando os models
 $conexao = new conexao();
-$banco = $conexao->getConnection();
+$banco = $banco->getConnection();
 
 $cidadaoController = new CidadaoController($banco);
 
 //recebendo dados e decodificando o json
-$response_json = file_get_contents("php://input");
-$dados = json_decode($response_json, true);
+$response_json =file_get_contents("php://input");
+$dados=json_decode($response_json,true);
 
 //se receber dados realiza a inserção
-if ($dados) {
+if($dados){
     $cidadaoController->cadastrar($dados);
-} else {
-    //retorna a mensagem
-    http_response_code(200);
-
-    echo json_encode($response);
+}else{
+    $response=[
+        "erro"=>true,
+        "mensagem"=>"Não foi possivel Cadastrar o Cidadao!"
+    ];
 }
 
+//retorna a mensagem
+http_response_code(200);
 
+echo json_encode($response);

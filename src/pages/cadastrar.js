@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 function Cadastrar() {
     const [cidadao, setCidadao] = useState({
-        nome: '',
-        nis: ''
+        nome: ''
     });
     const [status, setStatus] = useState({
         type: '',
@@ -11,13 +10,7 @@ function Cadastrar() {
     const valorInput = e => setCidadao({ ...cidadao, [e.target.name]: e.target.value });
 
     //funcao que gera o NIS automaticamente
-    const gerarNIS = () => {
-        let nis = '';
-        for (let i = 0; i < 11; i++) {
-            nis += Math.floor(Math.random() * 10);
-        }
-        setCidadao(prevState => ({ ...prevState, nis }));
-    };
+  
 
     const cadCidadao = async e => {
         e.preventDefault();
@@ -57,13 +50,7 @@ function Cadastrar() {
                 <label>Nome: </label>
                 <input type="text" name="nome" placeholder="Nome do Cidadao" onChange={valorInput} /> <br />
 
-                <button type="button" onClick={gerarNIS}>Gerar NIS</button>
-                {cidadao.nis && (
-                    <div>
-                        <label>NIS Gerado: </label>
-                        <span>{cidadao.nis}</span>
-                    </div>
-                )}
+               
                 <button type="submit">Cadastrar</button>
             </form>
         </div>

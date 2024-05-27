@@ -10,17 +10,22 @@ class CidadaoController
     public function listar()
     {
         $result_cidadoes = $this->cidadao->listar();
-        if (($result_cidadoes) and ($result_cidadoes->rowCount() != 0)) {
-            while ($row_cidadao = $result_cidadoes->fetch(PDO::FETCH_ASSOC)) {
-                extract($row_cidadao);
+        $cidadoes_arr = array();
+        $cidadoes_arr["records"] = array();
 
-                $lista_cidadaos["records"][$id] = [
-                    'id' => $id,
-                    'nome' => $nome,
-                    'nis' => $nis
-                ];
-            }
+        while ($row_cidadao = $result_cidadoes->fetch(PDO::FETCH_ASSOC)) {
+            extract($row_cidadao);
+
+            $lista_cidadaos=array( 
+                'id' => $id,
+                'nome' => $nome,
+                'nis' => $nis
+            );
+
+            array_push($cidadoes_arr["records"],$lista_cidadaos);
         }
+        http_response_code(200);
+        echo json_encode($cidadoes_arr);
     }
 
     public function cadastrar($data)
