@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+
+.central {
+    display: flex;
+    justify-content: center;
+    /* Centraliza horizontalmente */
+    align-items: center;
+    /* Centraliza verticalmente */
+    height: 100vh;
+    /* Ajusta a altura da `div` ao tamanho da viewport */
+
+}
+.content{
+    display: flex; /* Habilita o Flexbox */
+    flex-direction: row; /* Alinha os itens em uma linha (lado a lado) */
+    align-items: center;
+}
+.content img {
+  
+    margin-right: -400px; /* Espaçamento entre a imagem e o texto */
+    text-decoration: none;
+  }
+.texto{
+    display: flex;
+    flex-direction: column; /* Alinha os itens verticalmente */
+    justify-content: center;
+    align-items: center; /* Alinha os itens à esquerda */
+     
+}
+.texto h1 {
+    font-family: "Poetsen One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 96px;
+    color: white;
+}
+.texto button{
+    margin-top: -70px;
+    text-align: center;
+    background-color: #006691;
+    width: 425px;
+    height: 92px;
+    border-radius: 20px;
+    font-family: "Poetsen One", sans-serif;
+    cursor: pointer;
+    font-style: normal;
+    font-size: 96px;
+    color: white;
+    line-height: 92px;
+
+}
+.texto button:hover {
+    background-color: #0056b3; /* Cor do botão ao passar o mouse */
+  }
+.app {
+    color: #006691;
+}
