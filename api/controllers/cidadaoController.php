@@ -47,4 +47,23 @@ class CidadaoController
 
         echo json_encode($response);
     }
+
+    public function buscarPorNIS($nis){
+        $response = $this->cidadao->buscar($nis);
+        if ($response->rowCount()>0) {
+            $row = $response->fetch(PDO::FETCH_ASSOC);
+            extract($row);
+            $cidadao=array(
+                "id"=>$id,
+                "nome"=>$nome,
+                "nis"=>$nis
+            );
+            http_response_code(200);
+            echo json_encode($cidadao);
+
+        }else{
+            http_response_code(400);
+            echo json_encode(array("mensagem" => "Cidadao não encontrado."));
+        }
+    }
 }
