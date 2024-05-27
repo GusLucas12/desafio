@@ -23,8 +23,12 @@ class Cidadao
         $result_cidadoes->execute();
         return $result_cidadoes;
     }
-    public function buscar($id){
-        
+    public function buscar($nis){
+        $query_nis="SELECT id,nome,nis FROM cidadao WHERE nis= :nis ";
+        $result_cidadoes = $this->conn->prepare($query_nis);
+        $result_cidadoes->bindParam(":nis", $nis);
+        $result_cidadoes->execute();
+        return $result_cidadoes;
     }
     public function criar(){
         $this->nis= $this->geradorNis();
