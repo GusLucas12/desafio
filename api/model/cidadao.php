@@ -31,11 +31,19 @@ class Cidadao
         $result_cidadoes->execute();
         return $result_cidadoes;
     }
+    public function delete($id){
+        $query_id="DELETE FROM cidadao WHERE id = :id";
+        $result_delete= $this->conn->prepare($query_id);
+        $result_delete->bindParam(":id", $id); 
+        $result_delete->execute();
+        return $result_delete;
+
+    }
     public function criar()
     {   
         //garente que nome não pode ser nulo
         if (empty($this->nome)) {
-            return array("erro" => true, "mensagem" => "Nome não pode ser nulo.");
+            return false;
         }
         //gera o nis automaticamente
         $this->nis = $this->geradorNis();

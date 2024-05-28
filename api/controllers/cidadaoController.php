@@ -32,16 +32,19 @@ class CidadaoController
     {
         $this->cidadao->nome = $data['cidadao']['nome'];
         $result = $this->cidadao->criar();
-        if (!$result['erro']) {
+        
+        if ($result) {
             $response = [
                 "erro" => false,
                 "mensagem" => "Cidadao Cadastrado com sucesso!",
                 "nis" => $this->cidadao->nis
             ];
+
+           
         } else {
             $response = [
                 "erro" => true,
-                "mensagem" => "Não foi possivel Cadastrar o Cidadao! ".$result['mensagem']
+                "mensagem" => "Não foi possivel Cadastrar o Cidadao! "
             ];
         }
         //retorna a mensagem
@@ -68,4 +71,20 @@ class CidadaoController
             echo json_encode(array("mensagem" => "Cidadao não encontrado."));
         }
     }
+
+    public function deletePorId($id){
+        $response = $this->cidadao->delete($id);
+        if($response){
+            $mensagem=["erro"=> false,"mensagem"=> "Deletado com sucesso"];
+            
+
+           
+        }else{
+            $mensagem=["erro"=> true,"mensagem"=> "Não foi possivel deletar! Tente novamente mais tarde"];
+            
+           
+        }
+        http_response_code(200);
+        echo json_encode($mensagem);
+    }    
 }
