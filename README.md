@@ -1,70 +1,138 @@
-# Getting Started with Create React App
+# Desafio Técnico Gesuas
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este projeto foi proposto para resolução do Desafio Técnico da empresa Gesuas.Consiste em uma aplicação web para cadastro e procura de cidadãos através de um código de 11 caracteres unico por cidadão.
 
-## Available Scripts
+## Introdução
 
-In the project directory, you can run:
+O CidadãoAPP permite o cadastro, listagem e exclusão de registros de cidadãos, onde cada cidadão possui um nome e um NIS (Número de Identificação Social). O NIS é um código de 11 digitos gerado automaticamente no backend e garantido que seja único.
 
-### `npm start`
+## Tecnologias Utilizadas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Backend:** PHP com PDO para interação com o banco de dados MySQL.
+- **Frontend:** React.js.
+- **Banco de Dados:** MySQL.
+- **Servidor Web:** Apache (XAMPP recomendado).
+-**Extras:** GitHub(Versionamento),Figma(Projeto de Telas).
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Pré-requisitos
 
-### `npm test`
+Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [XAMPP](https://www.apachefriends.org/index.html) (ou outro servidor Apache com suporte a PHP e MySQL)
+- [Node.js](https://nodejs.org/en/)
+- [npm](https://www.npmjs.com/) (gerenciador de pacotes do Node.js)
+- [Git](https://git-scm.com/)
 
-### `npm run build`
+## Instalação
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Clonando o Repositório
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone https://github.com/GusLucas12/desafio.git
+cd desafio
+```
+### Configurando o Backend
+Inicie o servidor Apache e MySQL pelo XAMPP.
+Crie o banco de dados:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```sql
+CREATE DATABASE desafio;
+```
+Crie a tabela cidadao:
 
-### `npm run eject`
+```sql
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+USE desafio;
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+CREATE TABLE cidadao (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(255) NOT NULL,
+    nis VARCHAR(11) NOT NULL UNIQUE
+);
+```
+Configuração do arquivo conexao.php:
+Edite o arquivo conexao.php com as configurações do seu banco de dados (usuário, senha, etc).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```php
+<?php
+$host = "localhost";
+$user = "root";
+$pass = "";
+$dbname = "desafio";
+$port = "3306";
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+$conn = new PDO("mysql:host=$host;port=$port;dbname=".$dbname,$user,$pass);
+?>
+```
+Copie os arquivos PHP para o diretório raiz do seu servidor Apache (htdocs no XAMPP):
+```bash
 
-## Learn More
+cp -r api/* /path/to/htdocs/desafio
+```
+### Configurando o Frontend
+Navegue até o diretório frontend:
+```bash
+cd frontend
+```
+Instale as dependências:
+```bash
+npm install
+```
+Inicie o servidor de desenvolvimento:
+```bash
+npm start
+```
+### Uso
+Acesse o backend no navegador:
+```plaintext
+http://localhost/desafio
+```
+Acesse o frontend no navegador:
+```plaintext
+http://localhost:3000
+```
+## Funcionalidades
+Cadastro de Cidadãos: Adicione o nome de um cidadão e o NIS será gerado automaticamente.
+Listagem de Cidadãos: Veja todos os cidadãos cadastrados com a opção de deletar cada um deles.
+Deleção de Cidadãos: Remova um cidadão da lista ao clicar no botão "Apagar".
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Estrutura do Projeto
+```plaintext
+desafio/
+├── api/
+|   ├── model/
+|   |   ├──cidadao.php
+|   |   └──conexao.php 
+|   ├── views/
+|   |   ├──deletar.php
+|   |   └──cadastrar.php
+│   ├── index.php
+│   └── controllers/
+│       └── cidadaoController.php
+└── frontend/
+    ├── public/
+    ├── src/
+    │   ├── components/
+    |   |   ├── nav.module.css
+    │   │   └── Header.js
+    │   ├── pages/
+    |   |   ├── listar.module.css 
+    |   |   ├── Home.module.css
+    |   |   ├── cadastrar.module.css    
+    |   |   ├── Home.js     
+    │   │   ├── cadastrar.js
+    │   │   └── listar.js
+    │   ├── App.js
+    │   └── index.js
+    ├── .gitignore
+    ├── package.json
+    └── README.md
+```    
+Contato
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato:
 
-### Code Splitting
+Email: gustavosilveira422.gl@gmail.com
+LinkedIn: https://www.linkedin.com/in/gustavo-lucas-7b44aa231/
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Feito por Gustavo Silveira Lucas
