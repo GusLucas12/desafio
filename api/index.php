@@ -13,7 +13,13 @@ $conexao = new conexao();
 $banco = $conexao->getConnection();
 
 $cidadaoController = new CidadaoController($banco);
+if (isset($_GET['nis'])) {
+    $nis = $_GET['nis'];
+    //listar os cidadoes por nis
+    $cidadaoController->buscarPorNIS($nis);
+} else {
+    //listar os cidadoes por coluna 
+    $cidadaoController->listar();
+}
 
 
-//listar os cidadoes por coluna 
-$cidadaoController->listar();
