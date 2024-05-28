@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Header from "../components/header";
+
 function Cadastrar() {
     const [cidadao, setCidadao] = useState({
         nome: ''
@@ -43,6 +45,7 @@ function Cadastrar() {
 
     return (
         <div>
+            <Header></Header>
             <h1>Cadastrar</h1>
             {status.type === 'erro' ? <p>{status.mensagem}</p> : " "}
             {status.type === 'sucess' ? <p>{status.mensagem}</p> : " "}
