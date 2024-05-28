@@ -28,7 +28,7 @@ function Listar() {
             });
     };
     const deleteCidadao = async (id) => {
-        fetch(`http://localhost/desafio/delete.php?id=${id}`)
+        fetch(`http://localhost/desafio/views/delete.php?id=${id}`)
             .then((response) => response.json())
             .then((responseJson) => {
                 if (responseJson.erro) {

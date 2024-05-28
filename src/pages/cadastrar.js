@@ -16,7 +16,7 @@ function Cadastrar() {
 
     const cadCidadao = async e => {
         e.preventDefault();
-        await fetch("http://localhost/desafio/cadastrar.php", {
+        await fetch("http://localhost/desafio/views/cadastrar.php", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
