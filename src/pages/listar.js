@@ -1,5 +1,7 @@
-import React,{useEffect,useState} from "react";
-
+import React, { useEffect, useState } from "react";
+import Header from "../components/header";
+import styles from "./listar.module.css"
+import lupa from "../images/lupa.png";
 function Listar() {
     const [data, setData] = useState([]);
     const getCidadoes = async () => {
@@ -10,30 +12,51 @@ function Listar() {
     useEffect(() => {
         getCidadoes();
     }, [])
-   
+
     return (
         <div>
-            <h1>Listar</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>Nis</th>
-                        <th>Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {Object.values(data).map(cidadao=> (
-                        <tr key={cidadao.id}>
-                            <td>{cidadao.id}</td>
-                            <td>{cidadao.nome}</td>
-                            <td>{cidadao.nis}</td>
-                            <td>Vizualizar Editar Apagar</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
+            <Header></Header>
+            <div className={styles}>
+
+                <h1>Cidadões Cadastrados:</h1>
+                <div className={styles.pag}>
+
+                    <div className={styles.tabela}>
+                        <div className={styles.search} >
+                          
+                            <input type="text" name="nome" placeholder="Procura por NIS" /> <br />
+                            <img src={lupa} class="search-icon"></img>
+
+                           
+                        </div>
+                   
+                        <table>
+                            <thead>
+                                <tr>
+                                    
+                                    <th><h1>Nome</h1></th>
+                                    <th><h1>NIS</h1></th>
+                                 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {Object.values(data).map(cidadao => (
+                                    <tr key={cidadao.id}>
+                                        
+                                        <td><div className={styles.exibition}>{cidadao.nome}</div></td>
+                                        <td><div className={styles.exibition}>{cidadao.nis}</div></td>
+                                        <td> Apagar</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+
+
+                </div>
+
+
+            </div>
         </div>
     )
 }
