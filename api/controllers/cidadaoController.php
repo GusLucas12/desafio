@@ -31,15 +31,17 @@ class CidadaoController
     public function cadastrar($data)
     {
         $this->cidadao->nome = $data['cidadao']['nome'];
-        if ($this->cidadao->criar()) {
+        $result = $this->cidadao->criar();
+        if (!$result['erro']) {
             $response = [
                 "erro" => false,
-                "mensagem" => "Cidadao Cadastrado com sucesso!"
+                "mensagem" => "Cidadao Cadastrado com sucesso!",
+                "nis" => $this->cidadao->nis
             ];
         } else {
             $response = [
                 "erro" => true,
-                "mensagem" => "Não foi possivel Cadastrar o Cidadao!"
+                "mensagem" => "Não foi possivel Cadastrar o Cidadao! ".$result['mensagem']
             ];
         }
         //retorna a mensagem
