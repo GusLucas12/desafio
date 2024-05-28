@@ -8,7 +8,7 @@ function Header(){
        <header>
         <div className={styles.interface}>
             <div className={styles.texto}>
-                <Link className={styles.link} to='/'>  <h1>Cidadão <span className={styles.app} >APP</span></h1></Link>
+                <Link className={styles.link} to='/listar'>  <h1>Cidadão <span className={styles.app} >APP</span></h1></Link>
           
                 
                 

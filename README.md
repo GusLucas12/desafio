@@ -13,7 +13,6 @@ O CidadãoAPP permite o cadastro, listagem e exclusão de registros de cidadãos
 - **Banco de Dados:** MySQL.
 - **Servidor Web:** Apache (XAMPP recomendado).
 -**Extras:** GitHub(Versionamento),Figma(Projeto de Telas).
-
 ## Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
@@ -128,38 +127,31 @@ desafio/
     ├── package.json
     └── README.md
 ```    
-Contato
+
+### Inserção de Dados de Teste
+Execute o comando SQL para execução de testes:
+
+``` sql
+
+USE desafio;
+
+INSERT INTO cidadao (nome, nis) VALUES
+('João Silva', '12345678901'),
+('Maria Oliveira', '23456789012'),
+('Pedro Santos', '34567890123'),
+('Ana Costa', '45678901234'),
+('Carlos Pereira', '56789012345'),
+('Beatriz Almeida', '67890123456'),
+('Paulo Ferreira', '78901234567'),
+('Mariana Lima', '89012345678'),
+('Ricardo Souza', '90123456789'),
+('Patrícia Mendes', '01234567890');
+```
+## Contato
 
 Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em contato:
 
 Email: gustavosilveira422.gl@gmail.com
 LinkedIn: https://www.linkedin.com/in/gustavo-lucas-7b44aa231/
 
-<<<<<<< HEAD
 Feito por Gustavo Silveira Lucas
-=======
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-sql
-CREATE DATABASE desafio;
->>>>>>> fa742b4908773fd30dd3dfc5b87433ff59360c20

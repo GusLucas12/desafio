@@ -8,7 +8,7 @@ function Home() {
                 <Link><img src={guy} alt=""></img></Link>
                 <div className={styles.texto}>
                     <h1>Cidadão <span className={styles.app} >APP</span></h1>
-                    <Link to='/'>
+                    <Link to='/listar'>
                         <button>Iniciar</button>
                     </Link>
 
