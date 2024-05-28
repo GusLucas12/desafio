@@ -71,7 +71,7 @@ cp -r api/* /path/to/htdocs/desafio
 ### Configurando o Frontend
 Navegue até o diretório frontend:
 ```bash
-cd frontend
+cd desafio
 ```
 Instale as dependências:
 ```bash
@@ -154,8 +154,4 @@ Se você tiver alguma dúvida ou sugestão, sinta-se à vontade para entrar em c
 Email: gustavosilveira422.gl@gmail.com
 LinkedIn: https://www.linkedin.com/in/gustavo-lucas-7b44aa231/
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 4df26a9a2297571d2f7718b3d9c03227e5166c94
 Feito por Gustavo Silveira Lucas
