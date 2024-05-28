@@ -8,27 +8,24 @@ function Cadastrar() {
     const [status, setStatus] = useState({
         type: '',
         mensagem: '',
-        nis:''
+        nis: ''
     });
     const valorInput = e => setCidadao({ ...cidadao, [e.target.name]: e.target.value });
 
-    //funcao que gera o NIS automaticamente
 
 
     const cadCidadao = async e => {
         e.preventDefault();
-        console.log(cidadao.nome);
-
         await fetch("http://localhost/desafio/cadastrar.php", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ cidadao })
-        })
-            .then((response) => response.json())
-            .then((responseJson) => {//console.log(responseJson)
+        }).then((response) => response.json())
+            .then((responseJson) => {
                 if (responseJson.erro) {
+
                     setStatus({
                         type: 'erro',
                         mensagem: responseJson.mensagem
@@ -41,7 +38,9 @@ function Cadastrar() {
                     });
                 }
             })
-            .catch(() => { setStatus({ type: 'erro', mensagem: 'Cidadao não Cadastrado com sucesso,tente mais tarde!' }) })
+            .catch(() => {
+                setStatus({ type: 'erro', mensagem: 'Cidadao não Cadastrado com sucesso, tente mais tarde!' })
+            });
     }
 
 
@@ -52,21 +51,29 @@ function Cadastrar() {
             <div className={styles.pag}>
                 <div className={styles.container}>
                     <form onSubmit={cadCidadao}>
-                        <label>Nome: </label>
+                        <label><h1>Nome:</h1> </label>
                         <input type="text" name="nome" placeholder="Nome do Cidadao" onChange={valorInput} /> <br />
 
 
                         <button type="submit">Cadastrar</button>
 
-                        <div id="nisResult" class="result">
-                            {status.type === 'erro' ? <p>{status.mensagem}</p> : " "}
-                            {status.type === 'sucess' ? (
-                                <div>
-                                    <p>{status.mensagem}</p>
-                                    <p>NIS Gerado: {status.nis}</p>
-                                </div>
-                            ) : " "}
+                        <div className={styles.nisResult}>
+                            <h1>Mensagem de Cadastro:</h1>
+                            <div className={styles.nisMensagem}>
+                                {status.type === 'erro' ? <p>{status.mensagem}</p> : " "}
+                                {status.type === 'sucess' ? (
+                                    <div>
+                                        <p>{status.mensagem}</p>
+                                        <p>NIS Gerado: {status.nis}</p>
+                                    </div>
+                                ) : " "}
+                            </div> 
+
+
+
                         </div>
+
+
 
                     </form>
                 </div>
