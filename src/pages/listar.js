@@ -23,26 +23,34 @@ function Listar() {
 
                     <div className={styles.tabela}>
                         <div className={styles.search} >
-                          
+
                             <input type="text" name="nome" placeholder="Procura por NIS" /> <br />
                             <img src={lupa} class="search-icon"></img>
 
-                           
+
                         </div>
-                   
+
                         <table>
                             <thead>
                                 <tr>
-                                    
+
                                     <th><h1>Nome</h1></th>
                                     <th><h1>NIS</h1></th>
-                                 
+
                                 </tr>
                             </thead>
+                            <tr>
+                                <td> <div className={styles.line}></div>
+                                </td>
+                                <td> <div className={styles.line}></div>
+                                </td>
+                                <td> <div className={styles.line}></div>
+                            </td>
+                            </tr>
                             <tbody>
                                 {Object.values(data).map(cidadao => (
                                     <tr key={cidadao.id}>
-                                        
+
                                         <td><div className={styles.exibition}>{cidadao.nome}</div></td>
                                         <td><div className={styles.exibition}>{cidadao.nis}</div></td>
                                         <td> Apagar</td>
